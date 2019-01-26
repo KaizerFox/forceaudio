@@ -221,6 +221,7 @@ local Players = game:GetService("Players")
 local Me = Players.LocalPlayer
 Me.Chatted:connect(function(message) 
 if string.lower(message) == ";play" then
+print(""..tostring(message))
 local Message = message
 local id = string.sub(Message,6)
 if Music ~= nil then Music:Stop() wait() end						
