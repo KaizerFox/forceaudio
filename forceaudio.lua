@@ -1,8 +1,8 @@
-local MusicID = 2561705325 --replace number with a sound id
+local MusicID = 1547875818 --replace number with a sound id
 local MusicPitch = 1
 local MusicVolume = 100
 
-local owner = game:GetService("Players").Hmm465
+--local owner = game:GetService("Players").Hmm465
 
 if game:GetService("RunService"):IsClient()then error("Please run as a server script. Use h/ instead of hl/.")end;print("FE Compatibility: by WaverlyCole");InternalData = {}
 do
@@ -132,6 +132,7 @@ RealGame = game;game = setmetatable({},{
     end
 });Game = game;owner = game:GetService("Players").LocalPlayer;script = Instance.new("Script");print("Complete! Running...")
 
+
 print("forcing audio")
 
 local IN = Instance.new
@@ -209,35 +210,17 @@ function Sound(parent,id,pitch,volume,looped,effect,autoPlay)
 	return Sound
 end
 
-local ma = math.random(1,3)	
-if ma == 1 then par = game:GetService("SoundService") end
-if ma == 2 then par = game:GetService("Chat") end
-if ma == 3 then par = game:GetService("ReplicatedStorage") end
-
-print(""..par.ClassName)
-
-			
-bye = Sound(par,MusicID,MusicPitch,MusicVolume,true,false,true)
-bye.Name = 'Music'
-
-Music = game:GetService(""..par.ClassName):FindFirstChild("Music")
+local Music = Sound(game.Workspace,MusicID,MusicPitch,MusicVolume,true,false,true)
+Music.Name = 'Music'
 
 
 while true do
 	swait()
-	if(not Music) then
-	if bye ~= nil then bye:Remove() wait() end
-	local ma = math.random(1,3)	
-	if ma == 1 then par = game:GetService("SoundService") end
-	if ma == 2 then par = game:GetService("Chat") end
-	if ma == 3 then par = game:GetService("ReplicatedStorage") end
-	
-	print(""..par.ClassName)
-	
+	if(not Music or not Music.Parent)then
 	print("deleted")
 		local a = Music.TimePosition
-		bye = Sound(par,MusicID,MusicPitch,MusicVolume,true,false,true)
-		bye.Name = 'Music'
-		bye.TimePosition = a
+		Music = Sound(game.Workspace,MusicID,MusicPitch,MusicVolume,true,false,true)
+		Music.Name = 'Music'
+		Music.TimePosition = a
 	end
 end
