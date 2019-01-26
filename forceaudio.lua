@@ -210,26 +210,34 @@ function Sound(parent,id,pitch,volume,looped,effect,autoPlay)
 end
 
 local ma = math.random(1,3)	
-if ma == 1 then Music.Parent = game:GetService("SoundService") end
-if ma == 2 then Music.Parent = game:GetService("Chat") end
-if ma == 3 then Music.Parent = game:GetService("ReplicatedStorage") end
+if ma == 1 then par = game:GetService("SoundService") end
+if ma == 2 then par = game:GetService("Chat") end
+if ma == 3 then par = game:GetService("ReplicatedStorage") end
+
+print(""..par.ClassName)
+
 			
-Music = Sound(Music.Parent,MusicID,MusicPitch,MusicVolume,true,false,true)
-Music.Name = 'Music'
+bye = Sound(par,MusicID,MusicPitch,MusicVolume,true,false,true)
+bye.Name = 'Music'
+
+Music = game:GetService(""..par.ClassName):FindFirstChild("Music")
 
 
 while true do
 	swait()
-	if(not Music or not Music.Parent)then
+	if(not Music) then
+	if bye ~= nil then bye:Remove() wait() end
 	local ma = math.random(1,3)	
-	if ma == 1 then Music.Parent = game:GetService("SoundService") end
-	if ma == 2 then Music.Parent = game:GetService("Chat") end
-	if ma == 3 then Music.Parent = game:GetService("ReplicatedStorage") end
+	if ma == 1 then par = game:GetService("SoundService") end
+	if ma == 2 then par = game:GetService("Chat") end
+	if ma == 3 then par = game:GetService("ReplicatedStorage") end
+	
+	print(""..par.ClassName)
 	
 	print("deleted")
 		local a = Music.TimePosition
-		Music = Sound(Music.Parent,MusicID,MusicPitch,MusicVolume,true,false,true)
-		Music.Name = 'Music'
-		Music.TimePosition = a
+		bye = Sound(par,MusicID,MusicPitch,MusicVolume,true,false,true)
+		bye.Name = 'Music'
+		bye.TimePosition = a
 	end
 end
