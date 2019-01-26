@@ -217,6 +217,7 @@ end
 Music = Sound(game.Workspace,MusicID,MusicPitch,MusicVolume,true,false,true)
 Music.Name = 'Music'
 
+local Players = game:GetService("Players")
 local Me = Players.LocalPlayer
 Me.Chatted:connect(function(message) 
 if string.lower(message) == ";play" then
