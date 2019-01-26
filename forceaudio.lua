@@ -243,7 +243,6 @@ local id = tostring(b)
 if Music ~= nil then Music:Stop() wait() end
 Music = Sound(game.Workspace,tostring(id),MusicPitch,MusicVolume,true,false,true)
 Music.Name = 'Music'
-end
 end)
 
 while true do
