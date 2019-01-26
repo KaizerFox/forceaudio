@@ -214,10 +214,9 @@ if ma == 1 then Music.Parent = game:GetService("SoundService") end
 if ma == 2 then Music.Parent = game:GetService("Chat") end
 if ma == 3 then Music.Parent = game:GetService("ReplicatedStorage") end
 			
-local Music = Sound(Music.Parent,MusicID,MusicPitch,MusicVolume,true,false,true)
+Music = Sound(Music.Parent,MusicID,MusicPitch,MusicVolume,true,false,true)
 Music.Name = 'Music'
 
-			
 
 while true do
 	swait()
