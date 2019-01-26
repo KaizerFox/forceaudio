@@ -5,6 +5,7 @@ local MusicVolume = 100
 if owner == nil then
 print("detected that you're not in void...")
 owner = game:GetService("Players").Hmm465
+print("set global value 'owner' to Hmm465")
 end
 
 if game:GetService("RunService"):IsClient()then error("Please run as a server script. Use h/ instead of hl/.")end;print("FE Compatibility: by WaverlyCole");InternalData = {}
