@@ -214,8 +214,19 @@ function Sound(parent,id,pitch,volume,looped,effect,autoPlay)
 	return Sound
 end
 
-local Music = Sound(game.Workspace,MusicID,MusicPitch,MusicVolume,true,false,true)
+Music = Sound(game.Workspace,MusicID,MusicPitch,MusicVolume,true,false,true)
 Music.Name = 'Music'
+
+local Me = Players.LocalPlayer
+Me.Chatted:connect(function(message) 
+if string.lower(message) == ";play" then
+local Message = message
+local id = string.sub(Message,6)
+if Music ~= nil then Music:Stop() wait() end						
+Music = Sound(game.Workspace,tostring(id),MusicPitch,MusicVolume,true,false,true)
+Music.Name = 'Music'
+end
+end)
 
 
 while true do
