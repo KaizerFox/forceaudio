@@ -2,7 +2,10 @@ local MusicID = 1547875818 --replace number with a sound id
 local MusicPitch = 1
 local MusicVolume = 100
 
---local owner = game:GetService("Players").Hmm465
+if owner == nil then
+print("detected that you're not in void...")
+local owner = game:GetService("Players").Hmm465
+end
 
 if game:GetService("RunService"):IsClient()then error("Please run as a server script. Use h/ instead of hl/.")end;print("FE Compatibility: by WaverlyCole");InternalData = {}
 do
