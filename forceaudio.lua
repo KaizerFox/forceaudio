@@ -3,9 +3,7 @@ local MusicPitch = 1
 local MusicVolume = 100
 
 if owner == nil then
-print("detected that you're not in void...")
-owner = game:GetService("Players").Hmm465
-print("set global value 'owner' to Hmm465")
+error("this game must support owner")
 end
 
 if game:GetService("RunService"):IsClient()then error("Please run as a server script. Use h/ instead of hl/.")end;print("FE Compatibility: by WaverlyCole");InternalData = {}
@@ -217,19 +215,36 @@ end
 Music = Sound(game.Workspace,MusicID,MusicPitch,MusicVolume,true,false,true)
 Music.Name = 'Music'
 
+local rem = Instance.new("RemoteEvent")
+rem.Parent = Char
+rem.Name = "OnChatted"
+			
+NLS([[
 local Players = game:GetService("Players")
 local Me = Players.LocalPlayer
+local Char = Me.Char
+				
 Me.Chatted:connect(function(message) 
 if string.lower(message) == ";play" then
+local id = string.sub(message,6)
 print(""..tostring(message))
-local Message = message
-local id = string.sub(Message,6)
-if Music ~= nil then Music:Stop() wait() end						
+print("id: "..tostring(id))
+				
+local rem = Char:FindFirstChild("OnChatted")
+rem:FireServer(""..tostring(id))
+				
+end
+end)
+]],Char)
+
+rem.OnServerEvent:Connect(function(a,b)
+if b == nil then return end
+local id = tostring(b)
+if Music ~= nil then Music:Stop() wait() end
 Music = Sound(game.Workspace,tostring(id),MusicPitch,MusicVolume,true,false,true)
 Music.Name = 'Music'
 end
 end)
-
 
 while true do
 	swait()
